@@ -3,9 +3,9 @@ package main
 import (
 	"bytes"
 	"encoding/binary"
+	"github.com/codeproger/chatgpt-bot/opus"
 	"github.com/meinside/openai-go"
 	"github.com/sunicy/go-lame"
-	"github.com/tectiv3/chatgpt-bot/opus"
 	tele "gopkg.in/telebot.v3"
 	"io"
 	"log"

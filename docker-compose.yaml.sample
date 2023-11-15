@@ -1,0 +1,11 @@
+services:
+  bot:
+    environment:
+      OPENAI_API_KEY: ""
+      OPENAI_ORGANIZATION: ""
+
+      # for verbose messages and http request dumps,
+      VERBOSE: "true"
+    build:
+      context: .
+      dockerfile: ./bot.Dockerfile

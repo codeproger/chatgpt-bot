@@ -1,4 +1,4 @@
-module github.com/tectiv3/chatgpt-bot
+module github.com/codeproger/chatgpt-bot
 
 go 1.20
 
