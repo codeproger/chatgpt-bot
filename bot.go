@@ -30,6 +30,7 @@ const (
 	cmdUsers      = "/users"
 	cmdAddUser    = "/add"
 	cmdDelUser    = "/del"
+	cmdHelp       = "/help"
 	msgStart      = "This bot will answer your messages with ChatGPT API"
 	msgReset      = "This bots memory erased"
 	masterPrompt  = "You are a helpful assistant. You always try to answer truthfully. If you don't know the answer, just say that you don't know, don't try to make up an answer. Don't explain yourself. Do not introduce yourself, just answer the user concisely."
@@ -282,6 +283,29 @@ func (s Server) run() {
 		s.delUser(name)
 
 		return s.onGetUsers(c)
+	})
+
+	b.Handle(cmdHelp, func(c tele.Context) error {
+		text := "Commands:\n"
+		text += cmdStart + " - start bot\n"
+		text += cmdReset + " - reset bot memory\n"
+		text += cmdModel + " - select model\n"
+		text += cmdTemp + " - select temperature\n"
+		text += cmdPrompt + " - set prompt\n"
+		text += cmdAge + " - set conversation age\n"
+		text += cmdPromptCL + " - set default prompt\n"
+		text += cmdStream + " - enable/disable streaming\n"
+		text += cmdStop + " - stop streaming\n"
+		text += cmdInfo + " - show bot info\n"
+		text += cmdToJapanese + " - translate to Japanese\n"
+		text += cmdToEnglish + " - translate to English\n"
+		text += cmdToRussian + " - translate to Russian\n"
+		text += cmdUsers + " - show users\n"
+		text += cmdAddUser + " - add user\n"
+		text += cmdDelUser + " - delete user\n"
+		text += cmdHelp + " - show this help\n"
+
+		return c.Send(text, "text", &tele.SendOptions{ReplyTo: c.Message()})
 	})
 
 	b.Start()
